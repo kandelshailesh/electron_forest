@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>झिमझिमे सामुदायिक वन</title>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!-- <script src="printThis.js"></script> -->
+    <!-- <link rel="stylesheet" href="assets/css/normalize.css"> -->
+  <!-- <link rel="stylesheet" href="assets/css/skeleton.css"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="jhimjhime.js"></script>
+
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js">
+  
+</script>
+<script src="//nepalipatro.com.np/widget/js"></script>
+<!-- Latest compiled JavaScript -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  
+<script type="text/javascript" src="languagepack/js/jquery.calendars.js"></script>
+<script type="text/javascript" src="languagepack/js/jquery.calendars.nepali.js">
+</script>
+<script type="text/javascript" src="languagepack/js/jquery.calendars.plus.js"></script>
+
+<script type="text/javascript" src="languagepack/js/jquery.calendars.nepali-ne.js"></script>
+<link rel="stylesheet" type="text/css" href="languagepack/css/jquery.calendars.picker.css"> 
+<script type="text/javascript" src="languagepack/js/jquery.plugin.js"></script> 
+<script type="text/javascript" src="languagepack/js/jquery.calendars.picker.js"></script>
+
+<script src="print.js"></script>
+<!-- 
+<style>
+@media print
+{
+nav.navbar
+{
+  display:none;
+}
+.navbarinclude
+{
+  display:none;
+}
+}
+</style> -->
+  </head>
+  <body >
+    
+      <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+        
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <h6 class='dates d-inline pt-2 text-danger'>मिति:</h6>
+      <h6 class='times ml-1 d-inline pt-2 text-danger'>समय:</h6>
+      <h6 class='status ml-1 d-inline pt-2 text-danger'>Not Connected</h6>
+
+    </form>
+  </div>
+</nav>
+<a href='#' onclick='doc();' class='btn btn-primary'>Print</a>
+    <div class="navbarinclude row">
+    <div id="listitem" class='h-100 card col-md-8'>
+<!-- <input id='checkdate' type='text'> -->
+    </div>
+  </div>
+
+    <script type="text/javascript">
+      var gc = $.calendars.instance('nepali','ne'); 
+      const { ipcRenderer } = require('electron')
+     
+      var currentdate=gc.newDate();
+      var currenttime=new Date();
+      var currenttime=currenttime.toLocaleTimeString();
+
+      $('.dates').append("<h6 class='ml-1 d-inline'>"+currentdate+"</h6>");
+        $('.times').append("<h6 class='timeupdate ml-1 d-inline'>"+currenttime+"</h6>");
+$('.navbarinclude').prepend(navbar);
+ sqlconnection();
+$('#checkdate').calendarsPicker({calendar: $.calendars.instance('nepali')});
+setInterval(checktime,500);
+function checktime()
+{
+  var currenttimenew=new Date().toLocaleTimeString();
+  $('.timeupdate').text(currenttimenew);
+}
+function aamdaanimenu() {
+// body...
+
+    var aamdaanimenu="<ul class='aamdaanimenu' style='list-style-type:none;'><li class='d-inline '><button onclick='javascript:aamdaaniselect(event,1)' class=' btn bg-white' style='border-bottom-color:green;'>अाम्दानी थप</button></li><li class='d-inline'><button class='btn bg-white' onclick='javascript:aamdaaniselect(event,2)'' style='border-bottom-color:green;'>अाम्दानी खाेज</button></li><li class='d-inline'><button class='btn bg-white' style='border-bottom-color:green;' onclick='javascript:aamdaaniselect(event,3)'>शीर्षक/उपशीर्षक थप </button></li></ul>";
+    aamdaanimenu+=aamdaaniheads();
+    aamdaanimenu+='</div></div></form>';
+    return aamdaanimenu;
+}
+
+function aamdaaniselect(e,value)
+{
+// var gc = $.calendars.instance('nepali','ne'); 
+// alert(gc);
+var d = gc.newDate();
+// alert(d);
+  var e=e || window.event;
+  // var value=e.target.value;
+  // alert(value);
+  var aamdaaniselectdict={1:aamdaaniheads,2:aamdaanikhoj,3:aamdaaniadd};
+  $('#aamdaani').remove();
+  $('.aamdaanimenu').append(aamdaaniselectdict[value]);
+}
+function aamdaaniadd()
+{
+  var aamdaaniadd="<form class='w-100'><div id='aamdaani' class='row mt-5'><div class='col-md-3 '><select onchange='javascript:aamdaaniaddoptions(event)' class='form-control '><option value='1'>शीर्षक थप</option><option value='2'>उपशीर्षक थप</option></select></div><div class='col-md-5'><input class='form-control ' id='aamdaanititleoptioninputadd'><select class='form-control d-none' id='aamdaanititleoptionselectadd'></select><input type='text' class='form-control mt-2 d-none' id='aamdaanisubtitleoptioninputadd'></div><div class='col-md-2 form-group w-75'><a class='btn btn-primary'>Add</a></div></div></form>";
+  return aamdaaniadd;
+}
+function aamdaaniaddoptions(e)
+{
+var value=e.target.value;
+if(value==='1')
+{
+if(!$('#aamdaanititleoptionselectadd').hasClass('d-none'))
+{
+$('#aamdaanititleoptionselectadd').addClass('d-none');
+}
+if(!$('#aamdaanisubtitleoptioninputadd').hasClass('d-none'))
+{
+$('#aamdaanisubtitleoptioninputadd').addClass('d-none');
+}
+$('#aamdaanititleoptioninputadd').removeClass('d-none');
+
+}
+if(value==='2')
+{
+if(!$('#aamdaanititleoptioninputadd').hasClass('d-none'))
+{
+  $('#aamdaanititleoptioninputadd').addClass('d-none');
+}
+$('#aamdaanititleoptionselectadd').removeClass('d-none');
+$('#aamdaanisubtitleoptioninputadd').removeClass('d-none');
+var aamdaanilist= "SELECT * FROM aamdanititle ";
+
+connection.query(aamdaanilist,function(err,res,fields){
+  if(err) throw err;
+
+  for(var i=0;i<res.length;i++)
+  {
+      $('#aamdaanititleoptionselectadd').append('<option value="'+res[i].aamdaaniID+'">'+res[i].title+'</option>');
+  }
+});
+}}
+
+
+function aamdaanikhoj()
+{
+  var aamdaanikhoj="<form class='w-100' method='post'><div id='aamdaani' class='row text-center'><br/><div class='form-group aamdaanikhoj col-12'><label for='fname' class='d-inline'><br/>खाेज</label></div><div class='form-group  col-4'><select class='form-control d-inline w-100' onchange='javascript:aamdaanikhojvalue(event)'   required><option value='0'>----------------------</option><option value='1'>मिति अनुसार</option><option value='2'>शीर्षक अनुसार</option></select></div> ";
+
+  return aamdaanikhoj;
+}
+
+function aamdaanikhojvalue(e)
+{
+// alert(e);
+// alert(date.now());
+  var e = window.event || e;
+  if(e.target.value==='0')
+  {
+    $('#aamdaanibytitle').remove();
+    $('#aamdaanibydate').remove();
+    $('.aamdaanikhojbutton').remove();
+    $('.table-placement').remove();
+  }
+  if(e.target.value==='1')
+  {
+    // alert(e.target.value);
+    $('#aamdaanibytitle').remove();
+    $('.aamdaanikhojbutton').remove();
+    $('.table-placement').remove();
+
+    $('#aamdaani').append("<div id='aamdaanibydate' class='form-group ml-2 col-md-auto d-inline'><input placeholder='गते/साल/महिना'id='dateaamdaani' class='form-control w-75 d-inline'/><a class='btn  aamdaanikhojbutton btn-md btn-primary ml-2' onclick='javascript:aamdaanikhojbuttons(1)'> खाेज</a></div>");
+$('#dateaamdaani').calendarsPicker({calendar: $.calendars.instance('nepali')});
+
+  }
+  if(e.target.value==='2')
+  {
+    // alert(e.target.value);
+    $('#aamdaanibydate').remove();
+    $('.aamdaanikhojbutton').remove();
+    $('.table-placement').remove();
+    
+
+     var aamdaanihead="<div style='margin-top:-24px;' id='aamdaanibytitle' class='form-group col-md-auto'><br/><select class='form-control ' id='aamdaanititleoption' required><option value='0'>----------------------</option></select>";
+
+    $('#aamdaani').append(aamdaanihead);
+
+      var aamdaanilist= "SELECT * FROM aamdanititle ";
+
+      connection.query(aamdaanilist,function(err,res,fields){
+          if(err) throw err;
+          for(var i=0;i<res.length;i++)
+          {
+              $('#aamdaanititleoption').append('<option value="'+res[i].aamdaaniID+'">'+res[i].title+'</option>');
+          }
+$('#aamdaani').append("<a class='btn btn-primary h-75 aamdaanikhojbutton' onclick='javascript:aamdaanikhojbuttons(2)'> खाेज</a></div>");
+     
+});
+}
+}
+
+function aamdaanikhojbuttons(value)
+{
+$('.table-placement').remove();
+var aamdaanitableplacement="<div class='table-placement col-12'>";
+$('#aamdaani').append(aamdaanitableplacement);
+$('.table-placement').append('<br/><table class="aamdaanikhojtable table table-striped"><tr><th>Heading 1</th><th>Heading 2</th><th>Heading 3 </th></tr></table></div></div></form>');
+}
+
+      function aamdaaniheads()
+      {
+          
+
+          var aamdaanihead="<form id='aamdaaniform' class='w-100 ' method='post'><div align='center' id='aamdaani'><br/><div class='form-group text-center'><label for='fname' class='d-inline'>अाम्दानीकाे शीर्षक</label><br/><select class='form-control d-inline w-50' onchange='javascript:aamdaanisubtitleoptions(event);' name='aamdaanititleoption' id='aamdaanititleoption' required><option value='0'>----------------------</option></select>";
+
+
+
+          var aamdaanilist= "SELECT * FROM aamdanititle ";
+
+          connection.query(aamdaanilist,function(err,res,fields){
+              if(err) throw err;
+              console.log(res);
+              for(var i=0;i<res.length;i++)
+              {
+                // alert(res[i].aamdaaniID);
+                  $('#aamdaanititleoption').append('<option value="'+res[i].aamdaniID+'">'+res[i].title+'</option>');
+              }
+          $('#aamdaani').append("</div></div></form><div class='form-group text-center'><label for='fname' class='d-inline'>अाम्दानी उपशीर्षक </label><br/><select class='form-control d-inline w-50' name='aamdaanisubtitleoption' id='aamdaanisubtitleoption' required><option value='0'>----------------------</option></select>"); 
+          // $('#aamdaani').prepend(aamdaanimenu);
+                
+                
+            });
+
+          return aamdaanihead;
+    }
+
+ function aamdaanisubtitleoptions(e)
+  {
+    e=e || window.event;
+  // alert(e.target.value);''
+  // alert(e.target.value);
+  if(e.target.value>0)
+  {
+  var search= "SELECT * FROM aamdanisubtitle where aspid="+e.target.value;
+  connection.query(search,function(err,res,fields){
+      console.log(res);
+      if(err) throw err; 
+        $('#aamdaanisubtitleoption').text('');
+
+      for(var i=0;i<res.length;i++){
+        $('#aamdaanisubtitleoption').append("<option value='"+res[i].asid+"'>"+res[i].astitle+"</option>")
+        
+      }
+      // $('#aamdaani').append('</select>');
+     // alert($("#aamdaani").find('div').hasClass("mulye"));
+if($("#aamdaani").find('div').hasClass("mulye"))
+{
+
+  console.log("Already defined");
+}
+else{
+      $('#aamdaani').append("<div class='mulye w-50 text-center'><label for='Email' >मूल्य</label><br/><input type='number' min='0' name='mulye'  id='email' class=' form-control d-inline ' autofocus/><label for='Email' class='mt-2'>मिति</label><br/><input type='text' id='aamdaanidate' name='aamdaanidate' class=' form-control d-inline ' autofocus/></div><div align='center' class='form-group w-50 mt-3 text-center aamdaanisubmit'><button type='reset' class='form-control w-25 btn btn-primary aamdaanireset'>रद्द गर्नुहाेस</button><a  href='#' class='ml-2  form-control aamdaanisubmit w-25 btn btn-primary btn-sm ' id='aamdaaniform.submit' onclick='javascript:submitdataaamdaani(event)'>थप गर्नुहाेस</a></div></div></form>");
+            $('#aamdaanidate').calendarsPicker({calendar: $.calendars.instance('nepali'),dateFormat: 'yyyy-mm-dd'});
+    }
+    });
+  }
+  else
+{
+   $('#aamdaanisubtitleoption').text('');
+   $('#aamdaanisubtitleoption').append('<option value="0">--------------</option>');
+   if($('#aamdaani').find('div').hasClass('mulye'))
+   {
+
+    $('#aamdaani').find('div.mulye').remove();
+    // $('#aamdaani').find('div.mulye').removeClass('mulye');
+    $('#aamdaani').find('div.aamdaanisubmit').remove();
+    $('#aamdaani').find('div.aamdaanireset').remove();
+
+
+   }
+
+}
+}
+
+function kharchamenu() {
+  // body...
+
+     var kharchamenu="<ul class='kharchamenu' style='list-style-type:none;'><li class='d-inline '><button onclick='javascript:kharchaselect(event,1)' class=' btn bg-white' style='border-bottom-color:green;'>खर्च थप</button></li><li class='d-inline'><button class='btn bg-white' onclick='javascript:kharchaselect(event,2)'' style='border-bottom-color:green;'>खर्च खाेज</button></li><li class='d-inline'><button class='btn bg-white' style='border-bottom-color:green;' onclick='javascript:kharchaselect(event,3)'>शीर्षक/उपशीर्षक थप</button></li><li class='d-inline'><button class='btn bg-white' style='border-bottom-color:green;' onclick='javascript:kharchaselect(event,4)'>दैनिक रेकर्ड</button></li></ul>";
+     kharchamenu+=kharchaheads();
+     return kharchamenu;
+}
+
+function kharchaselect(e,value)
+{
+  var e=e || window.event;
+  // var value=e.target.value;
+  // alert(value);
+  var kharchaselectdict={1:kharchaheads,2:kharchakhoj,3:kharchaadd,4:kharchadainiki};
+  $('#kharcha').remove();
+  $('.kharchamenu').append(kharchaselectdict[value]);
+  $('#datekharcha1').calendarsPicker({calendar: $.calendars.instance('nepali'),dateFormat: 'yyyy-mm-dd'});
+  $('#datekharcha2').calendarsPicker({calendar: $.calendars.instance('nepali'),dateFormat: 'yyyy-mm-dd'});
+
+}
+function kharchadainiki()
+{
+  $('.kharchadainikitable').remove();
+  // var dainikikharcharecords='SELECT * from kharchatransaction LIMIT 20';
+  var dainikikharcharecords='SELECT kharchatitle.KharchaTitle AS titles, kharchasubtitle.kstitle AS subtitle, kharchatransaction.cost AS mulye,kharchatransaction.date as date FROM kharchatransaction LEFT JOIN kharchatitle ON kharchatransaction.kid = kharchatitle.KharchaID LEFT JOIN kharchasubtitle on kharchatransaction.ksid=kharchasubtitle.ksid';
+  var dainikikharcha="<table id='kharcha' class='table mt-3 table-hover  kharchadainikitable row'><tr class='col-12 text-center bg-dark text-white'><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th><th>मिति</th></tr>";
+  connection.query(dainikikharcharecords,function(err,result){
+    if(err) throw err;
+    console.log(result);
+    for(var i=0;i<result.length;i++)
+    {
+    $('.kharchadainikitable').append("<tr class='col-12 text-center thead-primary'><td>"+result[i].titles+"</td><td>"+result[i].subtitle+"</td><td>"+result[i].mulye+"</td><td>"+result[i].date+"</td></tr>");
+}
+  $('.kharchadainikitable').append("</table></div>");
+  
+  })
+  return dainikikharcha;
+}
+
+function kharchaadd()
+{
+  var kharchaadd="<form id='kharchaaddform' onsubmit='return false' class='w-100'><div id='kharcha' class='row mt-5'><div class='col-md-3 '><select name='addoption' onchange='javascript:kharchaaddoptions(event)' class='form-control '><option value='1'>शीर्षक थप</option><option value='2'>उपशीर्षक थप</option></select></div><div class='col-md-5'><input name='kharchatitleoptioninputadd' class='form-control' id='kharchatitleoptioninputadd' required='required'><select name='kharchatitleoptionselectadd' class='form-control d-none' id='kharchatitleoptionselectadd'></select><input name='kharchasubtitleoptioninputadd' type='text' class='form-control mt-2 d-none' id='kharchasubtitleoptioninputadd' required /></div><div class='col-md-2 form-group w-75'><button class='d-none' id='kharchatitleaddreset' type='reset'>Reset</button><button type='submit'  onclick='javascript:kharchatitleadd()' class='form-control btn btn-primary'>Add</button></div></div></form>";
+  return kharchaadd;
+}
+
+function kharchatitleadd()
+{
+var kharchaoptionadd=$('#kharchaaddform').serializeArray();
+console.log(kharchaoptionadd);
+if(!$('#kharchasubtitleoptioninputadd').hasClass('d-none'))
+{
+if(kharchaoptionadd[3]['value']!=='')
+{
+  var kharchasubtitleresult=[[kharchaoptionadd[3]['value'],kharchaoptionadd[2]['value']]];
+  var kharchasubtitleaddquery="INSERT INTO kharchasubtitle (kstitle,kspid) VALUES ?";
+  connection.query(kharchasubtitleaddquery,[kharchasubtitleresult],function(err,result)
+  {
+    if(err) throw err;
+    swal({
+      title:'Subtitle added successfully',
+      icon:'success'
+    })
+  });
+$('#kharchasubtitleoptioninputadd').val('');
+}
+// else
+// {
+//    swal({
+//       title:'Please add subtitle',
+//       icon:'warning'
+//     })
+// }
+}
+
+if(!$('#kharchatitleoptioninputadd').hasClass('d-none'))
+{
+  var kharchatitleresult=[[kharchaoptionadd[1]['value']]]
+  console.log(kharchatitleresult);
+  if(kharchaoptionadd[1]['value'])
+  {
+  var kharchatitleaddquery="INSERT into kharchatitle (KharchaTitle) values ?";
+  connection.query(kharchatitleaddquery,[kharchatitleresult],function(err,result)
+  {
+    if(err) throw err;
+    swal({
+      title:'Title added successfully',
+      icon:'success'
+    })
+
+  });
+  $('#kharchatitleoptioninputadd').val('');
+}
+// else
+// {
+//   swal({
+//     title:'शीर्षक लेख्नुहाेस',
+//     type:'info',
+//   })
+// }
+}
+}
+
+function kharchaaddoptions(e)
+{
+var value=e.target.value;
+if(value==='1')
+{
+if(!$('#kharchatitleoptionselectadd').hasClass('d-none'))
+{
+$('#kharchatitleoptionselectadd').addClass('d-none');
+}
+if(!$('#kharchasubtitleoptioninputadd').hasClass('d-none'))
+{
+$('#kharchasubtitleoptioninputadd').addClass('d-none');
+}
+$('#kharchatitleoptioninputadd').removeClass('d-none');
+
+}
+if(value==='2')
+{
+if(!$('#kharchatitleoptioninputadd').hasClass('d-none'))
+{
+  $('#kharchatitleoptioninputadd').addClass('d-none');
+}
+$('#kharchatitleoptionselectadd').removeClass('d-none');
+$('#kharchasubtitleoptioninputadd').removeClass('d-none');
+var kharchalist= "SELECT * FROM kharchatitle ";
+
+connection.query(kharchalist,function(err,res,fields){
+  if(err) throw err;
+  // alert(res.length);
+  for(var i=0;i<res.length;i++)
+  {
+      $('#kharchatitleoptionselectadd').append('<option value="'+res[i].KharchaID+'">'+res[i].KharchaTitle+'</option>');
+  }
+});
+}}
+
+function kharchakhoj()
+{
+  var kharchakhoj="<form class='w-100' id='kharchakhojform' method='post'><div id='kharcha' class='row '><br/><div class='form-group kharchakhoj col-12'><label for='fname' class='d-inline'><br/>खाेज</label></div><div class='form-group px-0  col-12'><input id='datekharcha1' style='width:140px;' name='datekharcha1' placeholder='सुरु मिति' class='form-control d-inline'><input id='datekharcha2' style='width:140px;' name='datekharcha2' placeholder='अन्तिम मिति' class='form-control ml-2 d-inline'><select class='form-control ml-2 w-25 d-inline' onchange='javascript:kharchasubtitleoptionskhoj(event);'  id='kharchatitleoption' name='kharchatitleoption' required><option value='0'>----------------------</option></select><select class='form-control d-inline ml-1 w-25'  id='kharchasubtitleoption' name='kharchasubtitleoption' required> <option value='0'>----------------------</option></select><a class='btn  kharchakhojbutton btn-md btn-primary ml-2' onclick='javascript:kharchakhojbuttons(1)'> खाेज</a> </div></div></form> ";
+  var kharchalist= "SELECT * FROM kharchatitle ";
+
+  connection.query(kharchalist,function(err,res,fields){
+    if(err) throw err;
+    for(var i=0;i<res.length;i++)
+    {
+        $('#kharchatitleoption').append('<option value="'+res[i].KharchaID+'">'+res[i].KharchaTitle+'</option>');
+    }
+// $('#kharcha').append("</div></div></form><div class='form-group text-center'><label for='fname' class='d-inline'>खर्चकाे उपशीर्षक</label><br/><select class='form-control d-inline w-50'  id='kharchasubtitleoption' name='kharchasubtitleoption' required><option value='0'>----------------------</option></select>"); 
+})
+  return kharchakhoj;
+
+}
+
+// function doc()
+// {
+//   $('#kharchatable1').printThis({ debug : true});
+// }
+function doc()
+{
+  var printContent = document.getElementById('kharchatable1');
+  console.log(printContent);
+  var printitem = document.createElement('div');
+  var data=$('<div/>').append($('#kharchatable1').clone()).html();
+  var results= '<table style="margin:auto; position:absolute; top:50px; left:100px;" border="1" cellpadding="10" cellspacing="0">'+$('#kharchatable1').html()+'</table>';
+  alert(results);
+//   var css = $("<link>", {
+//   "rel" : "stylesheet",
+//   "type" :  "text/css",
+//   "href" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+// })[0];
+
+var contents='<!DOCTYPE html><html><head><title>Current</title></head><body onload="window.print()">'+results+'</body></html>';
+ipcRenderer.send('asynchronous-message', contents)
+  // var WinPrint = window.open('', '', 'width=1200,height=900');
+
+  // // WinPrint.document.open();
+  // WinPrint.document.write('<!DOCTYPE html><html><body>'+results+'</body></html>');
+  // // WinPrint.document.write('<!DOCTYPE html><html><body><h2>Basic HTML Table</h2><table border="1" style="width:100%"><tr><th>Firstname</th><th>Lastname</th> <th>Age</th></tr><tr><td>Jill</td><td>Smith</td><td>50</td></tr><tr><td>Eve</td><td>Jackson</td><td>94</td></tr><tr><td>John</td><td>Doe</td><td>80</td></tr></table></body></html>');
+
+
+  //  //  WinPrint.document.write('');
+  //  // WinPrint.document.write(data);
+  //  //  WinPrint.document.write('</body></html>');
+
+  // WinPrint.document.close();
+  // WinPrint.focus();
+  // // window.print();
+  // WinPrint.print();
+  // WinPrint.close();
+}
+
+function kharchakhojbuttons(value)
+{
+// $('.table-placement').remove();
+// alert(value);
+
+var kharchakhojdate1=$('#datekharcha1').val();
+var kharchakhojdate2=$('#datekharcha2').val();
+var kharchakhojtitle=parseInt($('#kharchatitleoption').val());
+var kharchakhojsubtitle=parseInt($('#kharchasubtitleoption').val());
+alert(kharchakhojtitle);
+alert(kharchakhojsubtitle);
+if(kharchakhojtitle>0 && kharchakhojsubtitle>0)
+{
+  $('.kharchakhojtable1').remove();
+  var kharchakhojquery='SELECT kharchatitle.KharchaTitle AS titles, kharchasubtitle.kstitle AS subtitle, SUM(kharchatransaction.cost) AS mulye,max(kharchatransaction.date) as date FROM kharchatransaction LEFT JOIN kharchatitle ON kharchatransaction.kid = kharchatitle.KharchaID LEFT JOIN kharchasubtitle on kharchatransaction.ksid=kharchasubtitle.ksid  where (kharchatransaction.date between ? and ?) and (kharchatitle.KharchaID= ? )and (kharchasubtitle.ksid= ?) group by kharchatransaction.ksid,kharchatransaction.kid ';
+  connection.query(kharchakhojquery,[kharchakhojdate1,kharchakhojdate2,kharchakhojtitle,kharchakhojsubtitle],function(err,res,fields){
+    if(err) throw err;
+    $('#kharcha').append("<table id='kharchatable1' class='table mt-3 table-hover  kharchakhojtable1 row'><tr><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th></tr>");
+    console.log(res.length);
+    for(var i=0;i<res.length;i++)
+    {
+      $('.kharchakhojtable1').append("<tr><td>"+res[i].titles+"</td><td>"+res[i].subtitle+"</td><td>"+res[i].mulye+"</td></tr>");
+    }
+  })
+  $('.kharchakhojtable1').append('</table>')
+}
+else if(kharchakhojtitle>0 && kharchakhojsubtitle===0)
+{
+  $('.kharchakhojtable1').remove();
+  var kharchakhojquery='SELECT kharchatitle.KharchaTitle AS titles, kharchasubtitle.kstitle AS subtitle, SUM(kharchatransaction.cost) AS mulye,max(kharchatransaction.date) as date FROM kharchatransaction LEFT JOIN kharchatitle ON kharchatransaction.kid = kharchatitle.KharchaID LEFT JOIN kharchasubtitle on kharchatransaction.ksid=kharchasubtitle.ksid  where (kharchatransaction.date between ? and ?)  and (kharchatitle.KharchaID= ?) group by kharchatransaction.ksid,kharchatransaction.kid ';
+
+  connection.query(kharchakhojquery,[kharchakhojdate1,kharchakhojdate2,kharchakhojtitle],function(err,res,fields){
+    if(err) throw err;
+    const grouped = res.reduce((groups, cur) => {
+      console.log(groups);
+      console.log(cur);
+    const key = cur.titles;
+    groups[key] = (groups[key] || 0) + 1;
+    return groups;
+}, {});
+const totaltitlekharcha = res.reduce((groups, cur) => {
+  console.log(groups);
+      console.log(cur);
+if(groups[cur.titles]==undefined)
+{
+  groups[cur.titles]=0;
+}
+const key = cur.titles;
+    
+groups[key] = groups[key]+ cur.mulye;
+return groups;
+}, {});
+    
+const totaltitlekharchaamount = Object.keys(totaltitlekharcha).map(key => ({titles: key, total: totaltitlekharcha[key]}));
+var totaltitle=0;
+    for(var key in totaltitlekharchaamount)
+    {
+      totaltitle=totaltitle+totaltitlekharchaamount[key]['total'];
+    }
+const result = Object.keys(grouped).map(key => ({titles: key, count: grouped[key]}));
+    // $('#kharcha').append("<table id='kharchatable1' class='table table-bordered mt-3 table-hover  kharchakhojtable1 row'><tr><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th></tr>");
+    console.log(res.length);
+     $('#kharcha').append("<table style='width:95%;' id='kharchatable1' class='table table-bordered mt-3 table-hover  kharchakhojtable1'><tr><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th></tr>");
+    var counts=0;
+    
+for(j=0;j<result.length;j++)
+{
+// $('#kharchatable1').append(`<tr><td rowspan='${result[j].count + 1}'>${result[j].titles}</td><th>जम्मा</th><td>44444</td></tr>`);
+    for(i=0;i<result[j]['count'];i++)
+    {    
+      // if(i>0)
+      // {
+      //   $('#kharchatable1').append('<tr>');
+      // }
+    if(i==0)
+    {
+      $('#kharchatable1').append(`<tr><td rowspan='${result[j].count+1}'>${result[j].titles}</td><td>${res[counts].subtitle}</td><td>${res[counts].mulye}</td></tr>`);
+    }
+    else
+    {
+    $('.kharchakhojtable1').append(`<tr><td>${res[counts].subtitle}</td><td>${res[counts].mulye}</td></tr>`);
+      
+    }
+    counts=counts+1;
+    }
+    $('#kharchatable1').append(`<tr><th>जम्मा</th><td>${totaltitlekharchaamount[j]['total']}</td></tr>`);
+    }
+      
+    
+  });
+  $('.kharchakhojtable1').append("</table>");
+  }
+else
+{
+  $('.kharchakhojtable1').remove();
+  var kharchakhojquery='SELECT kharchatitle.KharchaTitle AS titles, kharchasubtitle.kstitle AS subtitle, SUM(kharchatransaction.cost) AS mulye,max(kharchatransaction.date) as date FROM kharchatransaction LEFT JOIN kharchatitle ON kharchatransaction.kid = kharchatitle.KharchaID LEFT JOIN kharchasubtitle on kharchatransaction.ksid=kharchasubtitle.ksid  where (kharchatransaction.date between ? and ?)  group by kharchatransaction.ksid,kharchatransaction.kid ';
+  connection.query(kharchakhojquery,[kharchakhojdate1,kharchakhojdate2],function(err,res,fields){
+    if(err) throw err;
+    
+    const grouped = res.reduce((groups, cur) => {
+    const key = cur.titles;
+    groups[key] = (groups[key] || 0) + 1;
+    return groups;
+}, {});
+
+const totaltitlekharcha = res.reduce((groups, cur) => {
+if(groups[cur.titles]==undefined)
+{
+  groups[cur.titles]=0;
+}
+const key = cur.titles;
+    
+groups[key] = groups[key]+ cur.mulye;
+return groups;
+}, {});
+    
+const totaltitlekharchaamount = Object.keys(totaltitlekharcha).map(key => ({titles: key, total: totaltitlekharcha[key]}));
+const result = Object.keys(grouped).map(key => ({titles: key, count: grouped[key]}));
+    // let restitleunique= [... new Set(res.map(re => re.titles))];
+    // let restitlecount= [... new Set(restitle.map( rest => rest.titles.length))];
+    // console.log(restitles);
+    // console.log(restitlecount);
+    $('#kharcha').append("<table id='kharchatable1' style='width:95%;' class='table  mt-3 table-bordered table-hover  kharchakhojtable1 '><tr><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th></tr>");
+    var counts=0;
+    var totaltitle=0;
+    for(var key in totaltitlekharchaamount)
+    {
+      totaltitle=totaltitle+totaltitlekharchaamount[key]['total'];
+    }
+    console.log(totaltitle);
+for(j=0;j<result.length;j++)
+{
+// $('#kharchatable1').append(`<tr><td rowspan='${result[j].count + 1}'>${result[j].titles}</td><th>जम्मा</th><td>44444</td></tr>`);
+    for(i=0;i<result[j]['count'];i++)
+    {    
+      // if(i>0)
+      // {
+      //   $('#kharchatable1').append('<tr>');
+      // }
+    if(i==0)
+    {
+      $('#kharchatable1').append(`<tr><td rowspan='${result[j].count+1}'>${result[j].titles}</td><td>${res[counts].subtitle}</td><td>${res[counts].mulye}</td></tr>`);
+    }
+    else
+    {
+    $('.kharchakhojtable1').append(`<tr><td>${res[counts].subtitle}</td><td>${res[counts].mulye}</td></tr>`);
+      
+    }
+      counts=counts+1;
+    }
+    $('#kharchatable1').append(`<tr><th>जम्मा</th><td>${totaltitlekharchaamount[j]['total']}</td></tr>`);
+    }
+    // $('#kharcha').append("<table id='kharchatable1' class='table table-bordered mt-3 table-hover  kharchakhojtable1 row'><tr><th>शीर्षक</th><th>उपशीर्षक</th><th>मूल्य</th></tr>");
+  //   console.log(res.length);
+  //   for(var i=0;i<res.length;i++)
+  //   {
+  //     $('.kharchakhojtable1').append("<tr><td>"+res[i].titles+"</td><td>"+res[i].subtitle+"</td><td>"+res[i].mulye+"</td></tr>");
+  //   }
+  // });`);
+  $('.kharchakhojtable1').append(`<tr><td style='text-align:center;' colspan='2'>कुल खर्च</td><td>${totaltitle}</td></tr>`);
+  });
+  $('.kharchakhojtable1').append(`</table>`);
+  // $('.kharchakhojtable1').append("</table>");
+  $('#kharcha').append("<a id='printbutton' onclick='doc()' href='#'  class='btn btn-primary'>Print</a>" );
+
+}
+}
+
+
+function kharchaheads()
+{
+
+var kharchahead="<form class='w-100' id='kharchaform' method='post'><div align='center' id='kharcha'><br/><div class='form-group text-center'><label for='fname' class='d-inline'>खर्चकाे शीर्षक</label><br/><select class='form-control d-inline w-50' onchange='javascript:kharchasubtitleoptions(event);'  id='kharchatitleoption' name='kharchatitleoption' required><option value='0'>----------------------</option></select>";
+
+
+
+var kharchalist= "SELECT * FROM kharchatitle ";
+
+connection.query(kharchalist,function(err,res,fields){
+    if(err) throw err;
+    for(var i=0;i<res.length;i++)
+    {
+        $('#kharchatitleoption').append('<option value="'+res[i].KharchaID+'">'+res[i].KharchaTitle+'</option>');
+    }
+$('#kharcha').append("</div></div></form><div class='form-group text-center'><label for='fname' class='d-inline'>खर्चकाे उपशीर्षक</label><br/><select class='form-control d-inline w-50'  id='kharchasubtitleoption' name='kharchasubtitleoption' required><option value='0'>----------------------</option></select>"); 
+// $('#kharcha').prepend(kharchamenu);
+      
+      
+  });
+
+return kharchahead;
+}
+
+function kharchasubtitleoptionskhoj(e)
+{
+  e=e || window.event;
+    var date= new Date();
+    // alert(date);
+  // alert(e.target.value);''
+  if(e.target.value>0)
+  {
+  var search= "SELECT * FROM kharchasubtitle where kspid="+e.target.value;
+  connection.query(search,function(err,res,fields){
+      console.log(res);
+      if(err) throw err; 
+        $('#kharchasubtitleoption').text('');
+        $('#kharchasubtitleoption').append("<option value='0'>------------------</option>")
+      for(var i=0;i<res.length;i++){
+        $('#kharchasubtitleoption').append("<option value='"+res[i].ksid+"'>"+res[i].kstitle+"</option>")
+        
+      }
+
+});
+}
+else
+{
+  
+   $('#kharchasubtitleoption').text('');
+   $('#kharchasubtitleoption').append('<option value="0">--------------</option>');
+}
+}
+
+
+ function kharchasubtitleoptions(e)
+  {
+    e=e || window.event;
+    var date= new Date();
+    // alert(date);
+  // alert(e.target.value);''
+  if(e.target.value>0)
+  {
+  var search= "SELECT * FROM kharchasubtitle where kspid="+e.target.value;
+  connection.query(search,function(err,res,fields){
+      console.log(res);
+      if(err) throw err; 
+        $('#kharchasubtitleoption').text('');
+
+      for(var i=0;i<res.length;i++){
+        $('#kharchasubtitleoption').append("<option value='"+res[i].ksid+"'>"+res[i].kstitle+"</option>")
+        
+      }
+      // $('#kharcha').append('</select>');
+     // alert($("#kharcha").find('div').hasClass("mulye"));
+if($("#kharcha").find('div').hasClass("mulye"))
+{
+
+  console.log("Already defined");
+}
+else{
+  var kharchaform='kharchaform';
+      $('#kharcha').append("<div class='mulye w-50 text-center'><label for='Email' >मूल्य</label><br/><input type='number'  id='mulye' name='mulye' class=' form-control d-inline ' autofocus/><label for='Email' class='mt-2'>मिति</label><br/><input type='text' id='kharchadate' name='kharchadate' class=' form-control d-inline ' autofocus/></div><div align='center' class='form-group w-50 mt-3 text-center kharchasubmit'><button type='reset' class='form-control w-25 btn btn-primary kharchareset'>रद्द गर्नुहाेस</button><a  class='ml-2  form-control kharchasubmit w-25 btn btn-primary btn-sm ' href='#' id='kharchaform.submit' onclick='javascript:submitdatakharcha(event)'>Submit</a></div></div></form>");
+      $('#kharchadate').calendarsPicker({calendar: $.calendars.instance('nepali'),dateFormat: 'yyyy-mm-dd'});
+    }
+    });
+  }
+  else
+{
+   $('#kharchasubtitleoption').text('');
+   $('#kharchasubtitleoption').append('<option value="0">--------------</option>');
+   if($('#kharcha').find('div').hasClass('mulye'))
+   {
+
+    $('#kharcha').find('div.mulye').remove();
+    // $('#aamdaani').find('div.mulye').removeClass('mulye');
+    $('#kharcha').find('div.kharchasubmit').remove();
+    $('#aamdaani').find('div.kharchareset').remove();
+
+
+   }
+
+}
+}
+
+function submitdataaamdaani(e)
+{
+  var submitvalue=e.target.id;
+  var submitvalue=submitvalue.split('.');
+  alert(submitvalue);
+  var a=$('#'+submitvalue).serializeArray();
+  alert(a);
+  for(var i=0;i<a.length;i++)
+  {
+    console.log(a[i]);
+  }
+  // console.log(a[0]['value']);
+  
+  if(a[0]['value']>0 && a[1]['value']>0)
+  {
+     var date=new Date();
+     var currentdate=gc.newDate();
+     // var date=Date.toLocaleDateString();
+
+     var aamdaanidata=[[a[0]['value'],a[1]['value'],a[2]['value'],a[3]['value']]];
+     // var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
+    var insertaamdaanidata= "INSERT INTO aamdaanitransaction (aid,asid,cost,date) VALUES ? "
+    connection.query(insertaamdaanidata,[aamdaanidata],function(err,result)
+    {
+      
+      if (err) throw err;
+    console.log("Number of records inserted: " + result.affectedRows);
+    });
+    $('.aamdaanireset').click();
+    $('#aamdaanisubtitleoption').text('');
+    $('#aamdaanisubtitleoption').append('<option value="0">-----------------------------------</option>');
+  }
+}
+function submitdatakharcha(e)
+{
+  var submitvalue=e.target.id;
+  var submitvalue=submitvalue.split('.');
+  var a=$('#'+submitvalue).serializeArray();
+  // console.log(a[0]['value']);
+  
+  if(a[0]['value']>0 && a[1]['value']>0)
+  {
+     // var currentdate=gc.newDate();
+     var kharchadata=[[a[0]['value'],a[1]['value'],a[2]['value'],a[3]['value']]];
+     console.log(kharchadata);
+     // var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
+    var insertkharchadata= "INSERT INTO kharchatransaction (kid,ksid,cost,date) VALUES ? "
+    connection.query(insertkharchadata,[kharchadata],function(err,result)
+    {
+      
+      if (err) throw err;
+    console.log("Number of records inserted: " + result.affectedRows);
+    $('.kharchareset').click();
+    $('#kharchasubtitleoption').text('');
+    $('#kharchasubtitleoption').append('<option value="0">-----------------------------------</option>');
+
+    });
+    
+  }
+}
+  // alert(a);
+
+      // var listmenu={1:aamdani,2:kharchahead,3:upavokta,4:padhadhikari,5:kaathbibaran};
+      // var listmenu={1:aamdaaniheads,2:kharchaheads,3:upavokta,4:padhadhikari,5:kaathbibaran};
+      var listmenu={1:aamdaanimenu,2:kharchamenu,3:upavokta,4:padhadhikari,5:kaathbibaran};
+    
+
+      function showoption(value)
+      {
+          event.preventDefault();
+          $('#listitem').html('');
+          $('#listitem').prepend(listmenu[value]);
+$('#startdate').calendarsPicker({calendar: $.calendars.instance('nepali')});
+$('#enddate').calendarsPicker({calendar: $.calendars.instance('nepali')});
+
+      }
+// window.print();
+// swal({
+//   title: "Are you sure?",
+//   text: "Are you sure that you want to leave this page?",
+//   icon: "warning"
+// })
+// .then(willDeletes => {
+//   if (willDeletes) {
+//     swal("Deleted!", "Your imaginary file has been deleted!"+willDeletes, "success");
+//   }
+// });
+// const { ipcRenderer } = require('electron')
+// console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+// ipcRenderer.on('asynchronous-reply', (event, arg) => {
+//   console.log(arg) // prints "pong"
+// })
+// ipcRenderer.send('asynchronous-message', 'hello')
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Temperature Converter</title>
+    <!-- Latest compiled and minified CSS -->
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="jhimjhime.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<!-- Latest compiled JavaScript -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+	<title></title>
+</head>
+<body>
+	<div class="navbarinclude row">
+	
+<div  class="h-100 card col-md-8">
+<form>
+	
+<div class="row text-center">
+	<legend class="ml-5">पदाधिकारी</legend>
+		<div class="col-md-1">
+		</div>
+		<div class="form-group col-md-3">
+		<label>नाम</label>
+		<input placeholder= "कर्मचारीकाे नाम" type="text" class="form-control"/>
+	</div>
+	<div class="form-group col-md-2">
+		<label>पद</label>
+		<select name="post" id="samiti" class="form-control">
+			<option selected="selected" value="0">--------------</option>
+			<option  value="1">अध्यक्ष</option>
+			<option  value="2">उपाध्यक्ष</option>
+			<option  value="3">सह सिचव</option>
+			<option  value="4">सचिव</option>
+			<option value="5">सह सचिव</option>
+			<option value="6">सदस्य</option>
+			<option value="7">सल्लाहकार</option>
+			<option value="8">संयाेजक</option>
+			<option value="9">कास</option>
+			<option value="10">वन हेरालु</option>
+
+</select>
+</div>
+<div class="form-group col-md-2">
+		<label>समिति</label>
+		<select name="samiti" id="samiti" class="form-control">
+			<option selected="selected" value="0">--------------</option>
+			<option  value="1">कार्य समिति</option>
+			<option  value="2">लेखा समिति </option>
+			<option  value="3">कर्मचारी विवरण</option>
+</select>
+</div>
+<div class="form-group  col-md-4">
+	<br/>
+                <button type="reset" class="btn mt-2 btn-danger">रद्द गर्नुहाेस</button>
+
+		<button type="submit" class=" mt-2 btn btn-primary">जाेड्नुहाेस</button>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+<script type="text/javascript">
+  $(".navbarinclude").prepend(navbar);
+  </script>
+</body>
+</html>

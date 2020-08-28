@@ -1,0 +1,142 @@
+
+function kharchamenu() {
+  // body...
+
+     var kharchamenu="<ul class='kharchamenu' style='list-style-type:none;'><li class='d-inline '><button onclick='javascript:kharchaselect(event,1)' class=' btn bg-white' style='border-bottom-color:green;'>अाम्दानी थप</button></li><li class='d-inline'><button class='btn bg-white' onclick='javascript:kharchaselect(event,2)'' style='border-bottom-color:green;'>अाम्दानी खाेज</button></li><li class='d-inline'><button class='btn bg-white' style='border-bottom-color:green;' onclick='javascript:kharchaselect(event,3)'>भरखर</button></li></ul>";
+     return kharchamenu;
+}
+
+function kharchaselect(e,value)
+{
+  var e=e || window.event;
+  // var value=e.target.value;
+  // alert(value);
+  var kharchaselectdict={1:kharchaheads,2:kharchakhoj};
+  $('#kharcha').remove();
+  $('.kharchamenu').append(kharchaselectdict[value]);
+}
+
+function kharchakhoj()
+{
+  var kharchakhoj="<form class='w-100' method='post'><div id='kharcha' class='row text-center'><br/><div class='form-group kharchakhoj col-12'><label for='fname' class='d-inline'><br/>खाेज</label></div><div class='form-group  col-4'><select class='form-control d-inline w-100' onchange='javascript:kharchakhojvalue(event)'   required><option value='0'>----------------------</option><option value='1'>मिति अनुसार</option><option value='2'>शिर्षक अनुसार</option></select></div> ";
+
+  return kharchakhoj;
+}
+
+function kharchakhojvalue(e)
+{
+// alert(e);
+  var e = window.event || e;
+  if(e.target.value==='1')
+  {
+    // alert(e.target.value);
+    $('#kharchabytitle').remove();
+    $('.kharchakhojbutton').remove();
+    $('.table-placement').remove();
+
+    $('#kharcha').append("<div id='kharchabydate' class='form-group ml-2 col-md-auto d-inline'><input type='date' class='form-control w-75 d-inline'/><a class='btn  kharchakhojbutton btn-md btn-primary ml-2' onclick='javascript:kharchakhojbuttons(1)'> खाेज</a></div>");
+
+  }
+  if(e.target.value==='2')
+  {
+    // alert(e.target.value);
+    $('#kharchabydate').remove();
+    $('.kharchakhojbutton').remove();
+    $('.table-placement').remove();
+    
+
+     var kharchahead="<div style='margin-top:-24px;' id='kharchabytitle' class='form-group col-md-auto'><br/><select class='form-control ' id='kharchatitleoption' required><option value='0'>----------------------</option></select>";
+
+    $('#kharcha').append(kharchahead);
+
+      var kharchalist= "SELECT * FROM kharcha ";
+
+      connection.query(kharchalist,function(err,res,fields){
+          if(err) throw err;
+          for(var i=1;i<res.length;i++)
+          {
+              $('#kharchatitleoption').append('<option value="'+res[i].KharchaID+'">'+res[i].KharchaTitle+'</option>');
+          }
+$('#kharcha').append("<a class='btn btn-primary h-75 kharchakhojbutton' onclick='javascript:kharchakhojbuttons(2)'> खाेज</a></div>");
+     
+});
+}
+}
+
+function kharchakhojbuttons(value)
+{
+$('.table-placement').remove();
+var kharchatableplacement="<div class='table-placement col-12'>";
+$('#kharcha').append(kharchatableplacement);
+$('.table-placement').append('<br/><table class="kharchakhojtable table table-striped"><tr><th>Heading 1</th><th>Heading 2</th><th>Heading 3 </th></tr></table></div></div></form>');
+}
+
+      function kharchaheads()
+      {
+          
+          var kharchahead="<form class='w-100 ' method='post'><div align='center' id='kharcha'><br/><div class='form-group text-center'><label for='fname' class='d-inline'>खर्चकाे शिर्षक</label><br/><select class='form-control d-inline w-50' onchange='javascript:kharchasubtitleoptions(event);'  id='kharchatitleoption' required><option value='0'>----------------------</option></select>";
+
+
+
+          var kharchalist= "SELECT * FROM kharcha ";
+
+          connection.query(kharchalist,function(err,res,fields){
+              if(err) throw err;
+              for(var i=1;i<res.length;i++)
+              {
+                  $('#kharchatitleoption').append('<option value="'+res[i].KharchaID+'">'+res[i].KharchaTitle+'</option>');
+              }
+          $('#kharcha').append("</div></div></form><div class='form-group text-center'><label for='fname' class='d-inline'>खर्चकाे उपशिर्षक</label><br/><select class='form-control d-inline w-50'  id='kharchasubtitleoption' required><option value='0'>----------------------</option></select>"); 
+          // $('#kharcha').prepend(kharchamenu);
+                
+                
+            });
+
+          return kharchahead;
+    }
+
+ function kharchasubtitleoptions(e)
+  {
+    e=e || window.event;
+  // alert(e.target.value);''
+  if(e.target.value>0)
+  {
+  var search= "SELECT * FROM kharchasubtitle where kspid="+e.target.value;
+  connection.query(search,function(err,res,fields){
+      console.log(res);
+      if(err) throw err; 
+        $('#kharchasubtitleoption').val('');
+
+      for(var i=0;i<res.length;i++){
+        $('#kharchasubtitleoption').append("<option value='"+res[i].ksid+"'>"+res[i].kstitle+"</option>")
+        
+      }
+      // $('#kharcha').append('</select>');
+     // alert($("#kharcha").find('div').hasClass("mulye"));
+if($("#kharcha").find('div').hasClass("mulye"))
+{
+
+  console.log("Already defined");
+}
+else{
+      $('#kharcha').append("<div class='mulye w-50 text-center'><label for='Email' >मूल्य</label><br/><input type='text'  id='email' class=' form-control d-inline ' autofocus/></div><div align='center' class='form-group w-50 mt-3 text-center kharchasubmit'><button type='reset' class='form-control w-25 btn btn-primary kharchareset'>रद्द गर्नुहाेस</button><button type='submit'  class='ml-2  form-control kharchasubmit w-25 btn btn-primary btn-sm '  onclick='test()'>Submit</button></div></div></form>");
+    }
+    });
+  }
+  else
+{
+   $('#kharchasubtitleoption').text('');
+   $('#kharchasubtitleoption').append('<option value="0">--------------</option>');
+   if($('#kharcha').find('div').hasClass('mulye'))
+   {
+
+    $('#kharcha').find('div.mulye').remove();
+    // $('#aamdaani').find('div.mulye').removeClass('mulye');
+    $('#kharcha').find('div.kharchasubmit').remove();
+    $('#aamdaani').find('div.kharchareset').remove();
+
+
+   }
+
+}
+}

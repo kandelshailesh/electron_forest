@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+     <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="jhimjhime.js"></script>
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<!-- Latest compiled JavaScript -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <script type="text/javascript" src="../src/jhimjhime.js"></script>
+<style type="text/css">
+  a
+  {
+    text-decoration: none;
+  }
+</style>
+  </head>
+  <body>
+
+<div class="row navbarinclude ">
+       
+<div  class="h-100 card col-md-8">
+<form class=" w-100 align-items-center" method="post">
+    <div id="kharcha">
+        <br/>
+        <div class="form-group">
+        <label for="fname"  class="d-inline">खर्चकाे शिर्षक</label><br/>
+        <select class="form-control d-inline w-50" onchange="javascript:kharchaoptions()" id="kharchaoption" required>
+          <option value="1">वन संरक्षण कार्य </option>
+          <option value="2">वन विकाश कार्य</option>
+          <option value="3">वन सम्बर्द्वन कार्य</option>
+          <option value="4">वन सदुपयाेग कार्य</option>
+          <option value="5">अायमूलक तथा सामुदायिक विकाश</option>
+          <option value="6">जैविक विविधता संरक्षण कार्य</option>
+          <option value="7">भू तथा जलाधार संरक्षण कार्य</option>
+          <option value="8">संस्थागत विकाश कार्य</option>
+          <option value="9">शुसासन तथा क्षमता अभिबृदि  कार्यक्रम</option>
+          <option value="10">सामाजिक विकाश कार्यक्रम</option>
+          <option value="11">भाैतिक निर्माण कार्य / संघ संस्था अनुदान</option>
+        </select>
+        <button class="btn btn-success" onclick="javascript:kharchatitlemodal()">+</button>
+        
+        <!-- <button type="button" data-toggle="modal" data-target="#modalkharcha" class="btn btn-success d-inline ">+</button> -->
+<!-- The Modal -->
+        
+      </div>
+
+
+        <div class="form-group w-100">
+        <label for="lname" class="d-inline" >खर्चकाे उपशिर्षक </label><br/>
+         <select  class="d-inline form-control w-50" id="kharchaselect" >
+          <option value="1">वन संरक्षण कार्य </option>
+          <option value="2">वन विकाश कार्य</option>
+          <option value="3">वन सम्बर्द्वन कार्य</option>
+          <option value="4">वन सदुपयाेग कार्य</option>
+          <option value="5">ाअयमूलक तथा सामुदायिक विकाश</option>
+          <option value="6">जैविक विविधता संरक्षण कार्य</option>
+        </select>
+        <button class="btn btn-success" onclick="javascript:kharchasubtitlemodal()">+</button>
+        <!-- <button type="button" data-toggle="modal" data-target="#modalkharchasubtitle" class="btn btn-success  d-inline">+</button> -->
+
+        <select  class=" d-none form-control w-50" id="kharchaselect">
+         <option value="7">भू तथा जलाधार संरक्षण कार्य</option>
+          <option value="8">संस्थागत विकाश कार्य</option>
+          <option value="9">शुसासन तथा क्षमता अभिबृदि  कार्यक्रम</option>
+          <option value="10">सामाजिक विकाश कार्यक्रम</option>
+          <option value="11">भाैतिक निर्माण कार्य / संघ संस्था अनुदान</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+         <label for="Email"  class="d-inline" >मूल्य</label>
+         <input type="email" id="email" class=" form-control w-50" autofocus/>
+        </div>
+
+        <div align="center" class="form-group w-50">
+          <button type="submit" class="btn btn-primary btn-lg" onclick="test()">Submit</button>
+        </div>
+      </div>
+      </form>
+    </div>
+      <script type="text/javascript">
+       
+   $('.navbarinclude').prepend(navbar);
+//    function kharchamodal()
+//           {
+//             let win = new remote.BrowserWindow({
+//              parent: remote.getCurrentWindow(),
+//              modal: true
+//             })
+          
+//   win.loadURL(`file://${__dirname}/modalkharcha.html`)
+// }
+     
+  
+
+
+</script>
+
+</body>
+</html>
